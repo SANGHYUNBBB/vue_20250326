@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>파일명</title>
+  </head>
+  <body>
+    <div id="app">
+      <button :style="myColor">버튼1</button>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+
+    <script type="text/javascript">
+      const { createApp, ref, reactive } = Vue;
+
+      const app = createApp({
+        setup() {
+          const myColor = reactive({});
+          const myLayout = reactive({});
+          return {
+            myColor: {
+              backgroundColor: 'purple',
+              color: 'yellow',
+              width: '150px',
+              height: '80px',
+              textAlign: 'center',
+            },
+          };
+        },
+      });
+
+      const vm = app.mount('#app');
+    </script>
+  </body>
+</html>

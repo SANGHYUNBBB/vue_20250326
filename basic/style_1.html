@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>파일명</title>
+  </head>
+  <body>
+    <div id="app">
+      <button
+        :style="{backgroundColor:bc, color:c}"
+        @mouseover="hover"
+        @mouseout="out"
+      >
+        테스트
+      </button>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return {
+            bc: 'aqua',
+            c: 'black',
+          };
+        },
+        methods: {
+          hover(e) {
+            this.c = 'yellow';
+            this.bc = 'purple';
+          },
+          out(e) {
+            this.c = 'black';
+            this.bc = 'aqua';
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

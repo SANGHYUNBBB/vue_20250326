@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>파일명</title>
+    <style>
+      .btnColor {
+        background-color: aqua;
+        color: black;
+      }
+      .btnAlign {
+        text-align: center;
+        width: 120px;
+      }
+      .btnBorder {
+        border: khaki dashed 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <input
+        type="checkbox"
+        id="color"
+        v-model="isChecked"
+        :value="myColor"
+        @click="check"
+      />
+      색상<br />
+      <input
+        type="checkbox"
+        id="layout"
+        v-model="isChecked"
+        :value="myLayout"
+        @click="check"
+      />
+      정렬, 크기<br />
+      <input
+        type="checkbox"
+        id="border"
+        v-model="isChecked"
+        :value="myBorder"
+        @click="check"
+      />
+      테두리<br />
+      <button :class="myStyle">버튼</button>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script type="text/javascript">
+      const { createApp, ref, reactive } = Vue;
+
+      const app = createApp({
+        setup() {
+          const message = ref('Hello Vue!');
+          const myColor = ref('btnColor');
+          const myStyle = ref('');
+          const check = ref('');
+
+          return {
+            myStyle: '',
+            myColor: 'btnColor ',
+            myLayout: 'btnAlign ',
+            myBorder: 'btnBorder ',
+            isChecked: false,
+          };
+        },
+        methods: {
+          check(e) {
+            console.log('ddd');
+            if (color.isChecked === true) {
+              color.isChecked = false;
+              console.log('e.ischecked=', color.isChecked);
+              console.log('e.style =', color.style);
+
+              //   console.log()
+              this.myStyle = myColor;
+            } else if (color.isChecked === false) {
+              color.isChecked = true;
+              console.log('re.style =', color.style);
+              console.log('e.ischecked=', color.isChecked);
+            }
+          },
+        },
+      });
+
+      const vm = app.mount('#app');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>파일명</title>
+  </head>
+  <body>
+    <div id="app">
+      <div
+        @contextmenu="ctxStop"
+        style="position: absolute; left: 5px; top: 5px; right: 5px; bottom: 5px"
+      >
+        <a @contextmenu="childEvent" href="https://facebook.com">페이스북</a>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript">
+      const { createApp, ref } = Vue;
+
+      const app = createApp({
+        setup() {
+          const message = ref('Hello Vue!');
+
+          const ctxStop = (e) => {
+            console.log(e);
+            //e.target:a  이벤트가 발생한 요소가 a라는 뜻!
+            console.log(e.target.tagName);
+
+            //e.currentTarget 이벤트 리스너가 부착된 요소
+            console.log(e.currentTarget.tagName);
+
+            console.log(
+              e
+                .composedPath()
+                .map((el) => el.tagName)
+                .filter(boolean)
+            );
+
+            e.preventDefault();
+            console.log('우클릭이 금지되었습니다.');
+          };
+          const childEvent = (e) => {
+            console.log('자식요소에서 이벤트 발생');
+            e.stopPropagation();
+            //propagation 상위로 이벤트가 퍼져나가는 것을 막는 요소
+          };
+          return {
+            ctxStop,
+            childEvent,
+          };
+        },
+      });
+
+      const vm = app.mount('#app');
+    </script>
+  </body>
+</html>
