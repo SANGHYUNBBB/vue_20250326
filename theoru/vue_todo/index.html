@@ -46,6 +46,24 @@
           <time>2025-03-26</time>
           <i class="fa fa-trash"></i>
         </li>
+        <li>
+          <input type="checkbox" />
+          <span>입력된 리스트2</span>
+          <time>2025-03-26</time>
+          <i class="fa fa-trash"></i>
+        </li>
+        <li class="completed">
+          <input type="checkbox" />
+          <span>입력된 리스트3</span>
+          <time>2025-03-26</time>
+          <i class="fa fa-trash"></i>
+        </li>
+        <li>
+          <input type="checkbox" />
+          <span>입력된 리스트2</span>
+          <time>2025-03-26</time>
+          <i class="fa fa-trash"></i>
+        </li>
       </ul>
       <!-- 요약정보 -->
       <div class="todo-summary">
@@ -62,7 +80,32 @@
         name: 'App',
         data() {
           return {
-            numList: {},
+            todos: [
+              {
+                id: 1,
+                text: '할 일 1',
+                completed: false,
+                createAt: '2025-03-24',
+              },
+              {
+                id: 2,
+                text: '할 일 2',
+                completed: true,
+                createAt: '2025-03-25',
+              },
+              {
+                id: 3,
+                text: '할 일 3',
+                completed: false,
+                createAt: '2025-03-26',
+              },
+              {
+                id: 4,
+                text: '할 일 4',
+                completed: false,
+                createAt: '2025-03-26',
+              },
+            ],
           };
         },
       });
@@ -70,4 +113,3 @@
     </script>
   </body>
 </html>
-<!-- 반복문 사용시 키바인드 필수 -->
